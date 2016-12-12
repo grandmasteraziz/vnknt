@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - van_kent@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="van_kent">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="db_test"/>
+    <schema id="3" name="db_vankent"/>
+    <schema id="4" name="deneme"/>
+    <schema id="5" name="egitim"/>
+    <schema id="6" name="eticaret2013"/>
+    <schema id="7" name="eticaret2015"/>
+    <schema id="8" name="eticaretproje"/>
+    <schema id="9" name="information_schema"/>
+    <schema id="10" name="mysql"/>
+    <schema id="11" name="performance_schema"/>
+    <schema id="12" name="phpmyadmin"/>
+    <schema id="13" name="test"/>
+    <table id="14" parent="1" name="seri_ilan"/>
+    <table id="15" parent="1" name="fos_user"/>
+    <table id="16" parent="1" name="emlak"/>
+    <table id="17" parent="1" name="etkinlik"/>
+    <table id="18" parent="1" name="foto"/>
+    <table id="19" parent="1" name="kategori"/>
+    <table id="20" parent="1" name="oto"/>
+    <table id="21" parent="1" name="reklam"/>
+    <table id="22" parent="1" name="yasam"/>
+    <column id="23" parent="14" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="24" parent="14" name="adi">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="25" parent="14" name="aciklama">
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="26" parent="14" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="27" parent="15" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="28" parent="15" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="29" parent="15" name="username_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="30" parent="15" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="31" parent="15" name="email_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="32" parent="15" name="enabled">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="33" parent="15" name="salt">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="34" parent="15" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="35" parent="15" name="last_login">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="36" parent="15" name="confirmation_token">
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="37" parent="15" name="password_requested_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="38" parent="15" name="roles">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <index id="39" parent="15" name="UNIQ_957A647992FC23A8">
+      <columns>username_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="40" parent="15" name="UNIQ_957A6479A0D96FBF">
+      <columns>email_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="41" parent="15" name="UNIQ_957A6479C05FB297">
+      <columns>confirmation_token</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="42" parent="15" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="43" parent="15" name="UNIQ_957A647992FC23A8">
+      <columns>username_canonical</columns>
+      <underlying-index>UNIQ_957A647992FC23A8</underlying-index>
+    </key>
+    <key id="44" parent="15" name="UNIQ_957A6479A0D96FBF">
+      <columns>email_canonical</columns>
+      <underlying-index>UNIQ_957A6479A0D96FBF</underlying-index>
+    </key>
+    <key id="45" parent="15" name="UNIQ_957A6479C05FB297">
+      <columns>confirmation_token</columns>
+      <underlying-index>UNIQ_957A6479C05FB297</underlying-index>
+    </key>
+    <column id="46" parent="16" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="47" parent="16" name="adi">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="48" parent="16" name="aciklama">
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="49" parent="16" name="fiyat">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <key id="50" parent="16" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="51" parent="17" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="52" parent="17" name="adres">
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="53" parent="17" name="aciklama">
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="54" parent="17" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="55" parent="18" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="56" parent="18" name="adi">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="57" parent="18" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="58" parent="19" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="59" parent="19" name="adi">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="60" parent="19" name="parentID">
+      <mandatory>1</mandatory>
+      <data-type>smallint(6)|0</data-type>
+    </column>
+    <key id="61" parent="19" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="62" parent="20" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="63" parent="20" name="adi">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="64" parent="20" name="aciklama">
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <column id="65" parent="20" name="fiyat">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <key id="66" parent="20" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="67" parent="21" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="68" parent="21" name="adi">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="69" parent="21" name="aciklama">
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="70" parent="21" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="71" parent="22" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="72" parent="22" name="adi">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="73" parent="22" name="adres">
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="74" parent="22" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

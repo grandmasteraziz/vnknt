@@ -1,0 +1,7 @@
+anasayfa:
+    path:     /
+    defaults: { _controller: VanBundle:Default:index }
+
+listele:
+      path: /listele
+      defaults: { _controller: VanBundle:Default:listele }

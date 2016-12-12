@@ -1,0 +1,49 @@
+<?php
+
+namespace VanBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Seri_ilan
+ *
+ * @ORM\Table(name="seri_ilan")
+ * @ORM\Entity(repositoryClass="VanBundle\Repository\Seri_ilanRepository")
+ */
+class Seri_ilan
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adi", type="string", length=255)
+     */
+    private $adi;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aciklama", type="text")
+     */
+    private $aciklama;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Kategori",inversedBy="seri_ilanlar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="kategori_id")
+     */
+    private $kategori;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\User",inversedBy="seri_ilanlar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="uye_id")
+     */
+    private $uye;
+}

@@ -1,0 +1,64 @@
+<?php
+
+namespace VanBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Emlak
+ *
+ * @ORM\Table(name="emlak")
+ * @ORM\Entity(repositoryClass="VanBundle\Repository\EmlakRepository")
+ */
+class Emlak
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adi", type="string", length=255)
+     */
+    private $adi;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aciklama", type="text")
+     */
+    private $aciklama;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fiyat", type="string", length=100)
+     */
+    private $fiyat;
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Foto",inversedBy="emlaklar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="foto_id")
+     */
+    private $foto;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Kategori",inversedBy="emlaklar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="kategori_id")
+     */
+    private $kategori;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\User",inversedBy="emlaklar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="uye_id")
+     */
+    private $uye;
+}

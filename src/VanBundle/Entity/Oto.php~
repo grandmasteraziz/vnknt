@@ -1,0 +1,67 @@
+<?php
+
+namespace VanBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Oto
+ *
+ * @ORM\Table(name="oto")
+ * @ORM\Entity(repositoryClass="VanBundle\Repository\OtoRepository")
+ */
+class Oto
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adi", type="string", length=255)
+     */
+    private $adi;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="aciklama", type="text")
+     */
+    private $aciklama;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fiyat", type="string", length=100)
+     */
+    private $fiyat;
+
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Foto",inversedBy="otolar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="foto_id")
+     */
+    private $foto;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Kategori",inversedBy="otolar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="kategori_id")
+     */
+    private $kategori;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\User",inversedBy="otolar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="uye_id")
+     */
+    private $uye;
+}

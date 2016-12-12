@@ -1,0 +1,53 @@
+<?php
+
+
+namespace VanBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Seri_ilan",mappedBy="uye")
+     *
+     */
+    private $seri_ilanlar;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Oto",mappedBy="uye")
+     *
+     */
+    private $otolar;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Emlak",mappedBy="uye")
+     *
+     */
+    private $emlaklar;
+
+    public function __construct()
+    {
+        $this->seri_ilanlar=new ArrayCollection();
+        $this->otolar=new ArrayCollection();
+        $this->emlaklar=new ArrayCollection();
+
+        parent::__construct();
+        // your own logic
+    }
+}
