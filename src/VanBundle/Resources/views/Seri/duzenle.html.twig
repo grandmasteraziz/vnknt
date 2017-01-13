@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+{% block title %}Etkinlik Düzenle {% endblock title %}
+
+ {% block body %}
+     <div class="page-header">
+         <h2> <small> <h1>Etkinlik Düzenleme</h1></small></h2>
+     </div>
+
+     <!-- form div bası-->
+     <div class="container">
+     <form action="{{ path('etkinlik_guncelle') }}" method="post">
+
+         <div class="form-group">
+             <label for="adi">Adı:</label>
+             <input type="text" name="adi" id="adi" value="{{ etkinlikler.adi }}" class="form-control" required>
+         </div>
+
+         <div class="form-group">
+             <label for="adres">Adres:</label>
+             <input type="text" name="adres" id="adres" value="{{ etkinlikler.adres }}" class="form-control" required>
+         </div>
+
+         <div class="form-group">
+             <label for="aciklama">Açiklama:</label>
+         <input type="text" name="aciklama" id="aciklama"  value="{{ etkinlikler.aciklama }}" class="form-control" required>
+        </div>
+
+         <input type="hidden" value="{{ etkinlikler.id }}" name="id">
+
+         <button type="submit" class="btn btn-default">Kaydet</button>
+     </form>
+     </div> <!-- form div sonu-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <footer>
+         <p style="text-align: center">&copy; 2016  Putnas Kurumsal Yazılım Çözümleri</p>
+     </footer>
+
+ {% endblock %}

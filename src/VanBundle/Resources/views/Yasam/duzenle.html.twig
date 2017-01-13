@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block title %}İlan Düzenle {% endblock title %}
+
+ {% block body %}
+     <div class="page-header">
+         <h2> <small> <h1>Etkinlik Düzenleme</h1></small></h2>
+     </div>
+
+     <!-- form div bası-->
+     <div class="container">
+     <form action="{{ path('seriilan_guncelle') }}" method="post">
+
+         <div class="form-group">
+             <label for="adi">Adı:</label>
+             <input type="text" name="adi" id="adi" value="{{ ilanlar.adi}}" class="form-control" required>
+         </div>
+
+         <label for="kategori">Kategori:</label>
+         <select class="form-control" id="kategori" name="kategori">
+
+             {% for kt in kategoriler %}
+                 <option value="{{ kt.id }}" selected="{{ ilanlar.kategori.adi }}"> {{ kt.adi }}  </option>
+
+
+             {% endfor %}
+         </select>
+            <br>
+         <div class="form-group">
+             <label for="aciklama">Açiklama:</label>
+         <input type="text" name="aciklama" id="aciklama"  value="{{ ilanlar.aciklama }}" class="form-control" required>
+        </div>
+
+         <input type="hidden" value="{{ ilanlar.id }}" name="id">
+
+
+         <button type="submit" class="btn btn-default">Kaydet</button>
+     </form>
+     </div> <!-- form div sonu-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <footer>
+         <p style="text-align: center">&copy; 2016  Putnas Kurumsal Yazılım Çözümleri</p>
+     </footer>
+
+ {% endblock %}
