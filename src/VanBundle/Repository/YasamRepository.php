@@ -1,6 +1,7 @@
 <?php
 
 namespace VanBundle\Repository;
+use VanBundle\VanBundle;
 
 /**
  * YasamRepository
@@ -10,4 +11,5 @@ namespace VanBundle\Repository;
  */
 class YasamRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

@@ -10,4 +10,7 @@ namespace VanBundle\Repository;
  */
 class EtkinlikRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
+
 }

@@ -2,24 +2,54 @@
 {% block title %}İlan Düzenle {% endblock title %}
 
  {% block body %}
+
+     <header>
+         <!-- Nav Başı -->
+         <nav class="navbar navbar-inverse">
+             <div class="container-fluid">
+                 <div class="navbar-header">
+                     <a class="navbar-brand" href="/">Van Kent Rehberi</a>
+                 </div>
+                 <ul class="nav navbar-nav">
+                     <li class="active"><a href="{{ path('anasayfa') }}">Anasayfa</a></li>
+                     <li><a href="{{path('emlak_listele')}}">Emlak</a></li>
+                     <li><a href="{{path('seriilan_listele')}}">Seri İlanlar</a></li>
+                     <li><a href="{{path('etkinlik_listele')}}">Etkinlikler</a></li>
+                     <li><a href="{{path('yasam_listele')}}">Yaşam</a></li>
+                     <li><a href="{{path('oto_listele')}}">Vasıta</a></li>
+                     <li><a href="{{ path('reklam_listele') }}">Reklam</a> </li>
+                     <li><a href="{{path('reklamKategori_listele')}}">Reklam Kategori</a></li>
+                     <li><a href="{{path('acilis_listele')}}">Açılış Reklamı</a></li>
+
+
+                 </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                     <!--      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+                     <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-in"></span> Çıkış Yap</a></li>
+                 </ul>
+             </div>
+         </nav>
+         <!--Nav Sonu -->
+     </header>
+
      <div class="page-header">
          <h2> <small> <h1>Etkinlik Düzenleme</h1></small></h2>
      </div>
 
      <!-- form div bası-->
      <div class="container">
-     <form action="{{ path('seriilan_guncelle') }}" method="post">
+     <form action="{{ path('yasam_guncelle') }}" method="post">
 
          <div class="form-group">
              <label for="adi">Adı:</label>
-             <input type="text" name="adi" id="adi" value="{{ ilanlar.adi}}" class="form-control" required>
+             <input type="text" name="adi" id="adi" value="{{ yasamlar.adi}}" class="form-control" required>
          </div>
 
          <label for="kategori">Kategori:</label>
          <select class="form-control" id="kategori" name="kategori">
 
              {% for kt in kategoriler %}
-                 <option value="{{ kt.id }}" selected="{{ ilanlar.kategori.adi }}"> {{ kt.adi }}  </option>
+                 <option value="{{ kt.id }}" selected="{{ yasamlar.kategori.adi }}"> {{ kt.adi }}  </option>
 
 
              {% endfor %}
@@ -27,10 +57,10 @@
             <br>
          <div class="form-group">
              <label for="aciklama">Açiklama:</label>
-         <input type="text" name="aciklama" id="aciklama"  value="{{ ilanlar.aciklama }}" class="form-control" required>
+         <input type="text" name="aciklama" id="aciklama"  value="{{ yasamlar.adres }}" class="form-control" required>
         </div>
 
-         <input type="hidden" value="{{ ilanlar.id }}" name="id">
+         <input type="hidden" value="{{ yasamlar.id }}" name="id">
 
 
          <button type="submit" class="btn btn-default">Kaydet</button>

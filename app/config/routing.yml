@@ -2,9 +2,17 @@ van:
     resource: "@VanBundle/Resources/config/routing.yml"
     prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+#2 yerde / routing tanımlamışsınız :)
+#app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app:
+    resource: "@VanBundle/Controller/"
+    type:     annotation
+    prefix:   /users
+    defaults:
+        _format: json

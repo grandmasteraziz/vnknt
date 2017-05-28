@@ -3,12 +3,14 @@
 namespace VanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Seri_ilan
  *
  * @ORM\Table(name="seri_ilan")
  * @ORM\Entity(repositoryClass="VanBundle\Repository\Seri_ilanRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Seri_ilan
 {
@@ -18,6 +20,7 @@ class Seri_ilan
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Expose
      */
     private $id;
 
@@ -25,6 +28,7 @@ class Seri_ilan
      * @var string
      *
      * @ORM\Column(name="adi", type="string", length=255)
+     * @JMS\Expose
      */
     private $adi;
 
@@ -32,20 +36,35 @@ class Seri_ilan
      * @var string
      *
      * @ORM\Column(name="aciklama", type="text")
+     * @JMS\Expose
      */
     private $aciklama;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="telefon", type="string", length=255)
+     * @JMS\Expose
+     */
+    private $telefon;
+
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Kategori",inversedBy="seri_ilanlar")
      * @ORM\JoinColumn(referencedColumnName="id",name="kategori_id")
+     * @JMS\Expose
      */
     private $kategori;
 
     /**
      * @ORM\ManyToOne(targetEntity="VanBundle\Entity\User",inversedBy="seri_ilanlar")
      * @ORM\JoinColumn(referencedColumnName="id",name="uye_id")
+     * @JMS\Expose
      */
     private $uye;
+
+
 
     /**
      * Get id
@@ -103,6 +122,30 @@ class Seri_ilan
     public function getAciklama()
     {
         return $this->aciklama;
+    }
+
+    /**
+     * Set telefon
+     *
+     * @param string $telefon
+     *
+     * @return Seri_ilan
+     */
+    public function setTelefon($telefon)
+    {
+        $this->telefon = $telefon;
+
+        return $this;
+    }
+
+    /**
+     * Get telefon
+     *
+     * @return string
+     */
+    public function getTelefon()
+    {
+        return $this->telefon;
     }
 
     /**

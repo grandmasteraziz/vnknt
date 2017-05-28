@@ -2,6 +2,7 @@
 
 namespace VanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,14 +43,23 @@ class Oto
      */
     private $fiyat;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefon", type="string", length=255)
+     */
+    private $telefon;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Foto",inversedBy="otolar")
-     * @ORM\JoinColumn(referencedColumnName="id",name="foto_id")
+     * One-To-Many, Bidirectional
+     *
+     * @var ArrayCollection $fotolar
+     *
+     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Foto",mappedBy="oto",cascade={"persist"})
+     *
      */
-    private $foto;
+    protected $fotolar;
 
 
     /**
@@ -64,6 +74,23 @@ class Oto
      * @ORM\JoinColumn(referencedColumnName="id",name="uye_id")
      */
     private $uye;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kapak_foto", type="string", length=255)
+     */
+    private $kapak_foto;
+
+    public function __construct()
+    {
+        $this->fotolar=new ArrayCollection();
+    }
+
+
+
+
 
     /**
      * Get id
@@ -148,27 +175,85 @@ class Oto
     }
 
     /**
-     * Set foto
+     * Set telefon
      *
-     * @param \VanBundle\Entity\Foto $foto
+     * @param string $telefon
      *
      * @return Oto
      */
-    public function setFoto(\VanBundle\Entity\Foto $foto = null)
+    public function setTelefon($telefon)
     {
-        $this->foto = $foto;
+        $this->telefon = $telefon;
 
         return $this;
     }
 
     /**
-     * Get foto
+     * Get telefon
      *
-     * @return \VanBundle\Entity\Foto
+     * @return string
      */
-    public function getFoto()
+    public function getTelefon()
     {
-        return $this->foto;
+        return $this->telefon;
+    }
+
+    /**
+     * Set kapakFoto
+     *
+     * @param string $kapakFoto
+     *
+     * @return Oto
+     */
+    public function setKapakFoto($kapakFoto)
+    {
+        $this->kapak_foto = $kapakFoto;
+
+        return $this;
+    }
+
+    /**
+     * Get kapakFoto
+     *
+     * @return string
+     */
+    public function getKapakFoto()
+    {
+        return $this->kapak_foto;
+    }
+
+    /**
+     * Add fotolar
+     *
+     * @param \VanBundle\Entity\Foto $fotolar
+     *
+     * @return Oto
+     */
+    public function addFotolar(\VanBundle\Entity\Foto $fotolar)
+    {
+        $this->fotolar[] = $fotolar;
+
+        return $this;
+    }
+
+    /**
+     * Remove fotolar
+     *
+     * @param \VanBundle\Entity\Foto $fotolar
+     */
+    public function removeFotolar(\VanBundle\Entity\Foto $fotolar)
+    {
+        $this->fotolar->removeElement($fotolar);
+    }
+
+    /**
+     * Get fotolar
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFotolar()
+    {
+        return $this->fotolar;
     }
 
     /**

@@ -31,30 +31,37 @@ class Foto
 
 
     /**
-     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Oto",mappedBy="foto")
+     *Many-To-One, Bidirectional
      *
+     * @var Oto $oto
+     *
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Oto",inversedBy="fotolar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="oto_id",onDelete="CASCADE")
      */
-    private $otolar;
+    protected $oto=null;
+
 
 
     /**
-     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Emlak",mappedBy="foto")
+     *Many-To-One, Bidirectional
      *
+     * @var Emlak $emlak
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Emlak",inversedBy="fotolar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="emlak_id",onDelete="CASCADE")
      */
-    private $emlaklar;
+    protected $emlak=null;
 
     /**
-     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Reklam",mappedBy="foto")
      *
+     *Many-To-One, Bidirectional
+     *
+     * @var Reklam $reklam
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Reklam",inversedBy="fotolar")
+     * @ORM\JoinColumn(referencedColumnName="id",name="reklam_id",onDelete="CASCADE")
      */
-    private $reklamlar;
-
-    public function __construct()
-    {
-        $this->otolar = new ArrayCollection();
-        $this->emlaklar = new ArrayCollection();
-        $this->reklamlar=new ArrayCollection();
-    }
+    protected $reklam=null;
 
 
 
@@ -94,104 +101,74 @@ class Foto
     }
 
     /**
-     * Add otolar
+     * Set oto
      *
-     * @param \VanBundle\Entity\Oto $otolar
+     * @param \VanBundle\Entity\Oto $oto
      *
      * @return Foto
      */
-    public function addOtolar(\VanBundle\Entity\Oto $otolar)
+    public function setOto(\VanBundle\Entity\Oto $oto = null)
     {
-        $this->otolar[] = $otolar;
+        $this->oto = $oto;
 
         return $this;
     }
 
     /**
-     * Remove otolar
+     * Get oto
      *
-     * @param \VanBundle\Entity\Oto $otolar
+     * @return \VanBundle\Entity\Oto
      */
-    public function removeOtolar(\VanBundle\Entity\Oto $otolar)
+    public function getOto()
     {
-        $this->otolar->removeElement($otolar);
+        return $this->oto;
     }
 
     /**
-     * Get otolar
+     * Set emlak
      *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOtolar()
-    {
-        return $this->otolar;
-    }
-
-    /**
-     * Add emlaklar
-     *
-     * @param \VanBundle\Entity\Emlak $emlaklar
+     * @param \VanBundle\Entity\Emlak $emlak
      *
      * @return Foto
      */
-    public function addEmlaklar(\VanBundle\Entity\Emlak $emlaklar)
+    public function setEmlak(\VanBundle\Entity\Emlak $emlak = null)
     {
-        $this->emlaklar[] = $emlaklar;
+        $this->emlak = $emlak;
 
         return $this;
     }
 
     /**
-     * Remove emlaklar
+     * Get emlak
      *
-     * @param \VanBundle\Entity\Emlak $emlaklar
+     * @return \VanBundle\Entity\Emlak
      */
-    public function removeEmlaklar(\VanBundle\Entity\Emlak $emlaklar)
+    public function getEmlak()
     {
-        $this->emlaklar->removeElement($emlaklar);
+        return $this->emlak;
     }
 
     /**
-     * Get emlaklar
+     * Set reklam
      *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEmlaklar()
-    {
-        return $this->emlaklar;
-    }
-
-    /**
-     * Add reklamlar
-     *
-     * @param \VanBundle\Entity\Reklam $reklamlar
+     * @param \VanBundle\Entity\Reklam $reklam
      *
      * @return Foto
      */
-    public function addReklamlar(\VanBundle\Entity\Reklam $reklamlar)
+    public function setReklam(\VanBundle\Entity\Reklam $reklam = null)
     {
-        $this->reklamlar[] = $reklamlar;
+        $this->reklam = $reklam;
 
         return $this;
     }
 
     /**
-     * Remove reklamlar
+     * Get reklam
      *
-     * @param \VanBundle\Entity\Reklam $reklamlar
+     * @return \VanBundle\Entity\Reklam
      */
-    public function removeReklamlar(\VanBundle\Entity\Reklam $reklamlar)
+    public function getReklam()
     {
-        $this->reklamlar->removeElement($reklamlar);
-    }
-
-    /**
-     * Get reklamlar
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReklamlar()
-    {
-        return $this->reklamlar;
+        return $this->reklam;
     }
 }

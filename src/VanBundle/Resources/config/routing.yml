@@ -3,5 +3,344 @@ anasayfa:
     defaults: { _controller: VanBundle:Default:index }
 
 listele:
-      path: /listele
+      path: /a/404
       defaults: { _controller: VanBundle:Default:listele }
+
+
+etkinlik_goruntu:
+      path: /a/etkinlik/
+      defaults: { _controller: VanBundle:Etkinlik:index }
+
+etkinlik_ekle:
+      path: /a/etkinlik/ekle
+      defaults: { _controller: VanBundle:Etkinlik:ekle }
+
+etkinlik_guncelle:
+      path: /a/etkinlik/guncelle
+      defaults: { _controller: VanBundle:Etkinlik:guncelle }
+
+etkinlik_listele:
+      path: /a/etkinlik/listele
+      defaults: { _controller: VanBundle:Etkinlik:listele }
+
+etkinlik_duzenle:
+      path: /a/etkinlik/duzenle/{id}
+      defaults: { _controller: VanBundle:Etkinlik:duzenle }
+
+etkinlik_sil:
+      path: /a/etkinlik/sil/{id}
+      defaults: { _controller: VanBundle:Etkinlik:sil }
+
+
+etkinlikjson_listele:
+      path: /api/etkinlik/listele
+      defaults: { _controller: VanBundle:EtkinlikJson:listele}
+
+etkinlikjson_sil:
+      path: /a/etkinlikjson/sil/{id}
+      defaults: { _controller: VanBundle:EtkinlikJson:sil}
+
+emlak_ekle:
+      path: /a/emlak/ekle
+      defaults: { _controller: VanBundle:Emlak:ekle}
+
+emlak_sil:
+      path: /a/emlak/sil/{id}
+      defaults: { _controller: VanBundle:Emlak:sil}
+
+emlak_listele:
+      path: /a/emlak/listele
+      defaults: { _controller: VanBundle:Emlak:listele}
+
+emlak_duzenle:
+      path: /a/emlak/duzenle/{id}
+      defaults: { _controller: VanBundle:Emlak:duzenle}
+
+emlak_guncelle:
+      path: /a/emlak/guncelle
+      defaults: { _controller: VanBundle:Emlak:guncelle}
+
+seriilan_ekle:
+      path: /a/seri-ilan/ekle
+      defaults: { _controller: VanBundle:SeriIlan:ekle}
+
+seriilan_listele:
+      path: /a/seri-ilan/listele
+      defaults: { _controller: VanBundle:SeriIlan:listele}
+
+seriilan_duzenle:
+      path: /a/seri-ilan/duzenle/{id}
+      defaults: { _controller: VanBundle:SeriIlan:duzenle}
+
+seriilan_guncelle:
+      path: /a/seri-ilan/guncelle
+      defaults: { _controller: VanBundle:SeriIlan:guncelle}
+
+seriilan_sil:
+      path: /a/seri-ilan/sil/{id}
+      defaults: { _controller: VanBundle:SeriIlan:sil}
+
+yasam_listele:
+      path: /a/yasam/listele
+      defaults: { _controller: VanBundle:Yasam:listele}
+
+yasam_ekle:
+      path: /a/yasam/ekle
+      defaults: { _controller: VanBundle:Yasam:ekle}
+
+yasam_duzenle:
+      path: /a/yasam/duzenle/{id}
+      defaults: { _controller: VanBundle:Yasam:duzenle}
+
+yasam_guncelle:
+      path: /a/yasam/guncelle
+      defaults: { _controller: VanBundle:Yasam:guncelle}
+
+yasam_sil:
+      path: /a/yasam/sil/{id}
+      defaults: { _controller: VanBundle:Yasam:sil}
+
+yasamjson_listele:
+      path: /a/yasamjson/listele
+      defaults: { _controller: VanBundle:YasamJson:listele}
+
+yasamjson_acil:
+      path: /a/yasamjson/acil
+      defaults: { _controller: VanBundle:YasamJson:acil}
+
+yasamjson_belediye:
+      path: /a/yasamjson/belediye
+      defaults: { _controller: VanBundle:YasamJson:belediyeListele}
+
+yasamjson_okul:
+      path: /a/yasamjson/okul
+      defaults: { _controller: VanBundle:YasamJson:okulListele}
+
+yasamjson_eczane:
+      path: /a/yasamjson/eczane
+      defaults: { _controller: VanBundle:YasamJson:eczaneListele}
+
+seriilan_json_sil:
+      path: /api/seri/sil/{id}
+      defaults: { _controller: VanBundle:SeriIlanJson:sil}
+
+seriilan_json_listele:
+      path: /api/seri/listele
+      defaults: { _controller: VanBundle:SeriIlanJson:listele}
+
+seriilan_json_kategoriListele:
+      path: /api/seri/kategoriListele
+      defaults: { _controller: VanBundle:SeriIlanJson:seriKategoriListele}
+
+seriilan_json_ekle:
+      path: /api/seri/ekle
+      defaults: { _controller: VanBundle:SeriIlanJson:ekle}
+
+seriilan_json_duzenle:
+      path: /a/seri-json/duzenle
+      defaults: { _controller: VanBundle:SeriIlanJson:duzenle}
+
+seriilan_json_guncelle:
+      path: /api/seri/guncelle
+      defaults: { _controller: VanBundle:SeriIlanJson:guncelle}
+
+seriilan_json_evarkadasi:
+      path: /api/seri/evarkadasi
+      defaults: { _controller: VanBundle:SeriIlanJson:evArkadasi}
+
+seriilan_json_isarayan:
+      path: /api/seri/isarayan
+      defaults: { _controller: VanBundle:SeriIlanJson:isArayanlar}
+
+seriilan_json_isveren:
+      path: /api/seri/isveren
+      defaults: { _controller: VanBundle:SeriIlanJson:isVeren}
+
+oto_listele:
+      path: /a/oto/listele
+      defaults: { _controller: VanBundle:Oto:listele}
+
+oto_ekle:
+      path: /a/oto/ekle
+      defaults: { _controller: VanBundle:Oto:ekle}
+
+oto_duzenle:
+      path: /a/oto/duzenle/{id}
+      defaults: { _controller: VanBundle:Oto:duzenle}
+
+oto_guncelle:
+      path: /a/oto/guncelle
+      defaults: { _controller: VanBundle:Oto:guncelle}
+
+oto_sil:
+      path: /a/oto/sil/{id}
+      defaults: { _controller: VanBundle:Oto:sil}
+
+foto_sil:
+      path: /a/foto/sil/{id}
+      defaults: { _controller: VanBundle:Foto:fotoSil}
+      methods: [DELETE]
+
+reklamKategori_listele:
+      path: /a/reklamKategori/listele
+      defaults: { _controller: VanBundle:ReklamKategori:listele}
+
+reklamKategori_ekle:
+      path: /a/reklamKategori/ekle
+      defaults: { _controller: VanBundle:ReklamKategori:ekle}
+
+reklamKategori_sil:
+      path: /a/reklamKategori/sil/{id}
+      defaults: { _controller: VanBundle:ReklamKategori:sil}
+
+reklamKategori_duzenle:
+      path: /a/reklamKategori/duzenle/{id}
+      defaults: { _controller: VanBundle:ReklamKategori:duzenle}
+
+reklamKategori_guncelle:
+      path: /a/reklamKategori/guncelle
+      defaults: { _controller: VanBundle:ReklamKategori:guncelle}
+
+reklam_ekle:
+      path: /a/reklam/ekle
+      defaults: { _controller: VanBundle:Reklam:ekle}
+
+reklam_sil:
+      path: /a/reklam/sil/{id}
+      defaults: { _controller: VanBundle:Reklam:sil}
+
+reklam_duzenle:
+      path: /a/reklam/duzenle/{id}
+      defaults: { _controller: VanBundle:Reklam:duzenle}
+
+reklam_guncelle:
+      path: /a/reklam/guncelle
+      defaults: { _controller: VanBundle:Reklam:guncelle}
+
+reklam_listele:
+      path: /a/reklam/listele
+      defaults: { _controller: VanBundle:Reklam:listele}
+
+uyeilan_json:
+      path: /api/usershare/{id}
+      defaults: { _controller: VanBundle:UserShareList:index}
+
+emlak_json_kiralık:
+      path: /api/emlak/kiralik
+      defaults: { _controller: VanBundle:EmlakJson:kiralik}
+
+emlak_json_satilik:
+      path: /api/emlak/satilik
+      defaults: { _controller: VanBundle:EmlakJson:satilik}
+
+emlak_json_apart:
+      path: /api/emlak/apart
+      defaults: { _controller: VanBundle:EmlakJson:apart}
+
+emlak_json_listele:
+      path: /a/emlak/json/listele
+      defaults: { _controller: VanBundle:EmlakJson:listele}
+
+emlak_json_ekle:
+      path: /api/emlak/ekle
+      defaults: { _controller: VanBundle:EmlakJson:ekle}
+
+emlak_json_guncelle:
+      path: /emlak/json/guncelle
+      defaults: { _controller: VanBundle:EmlakJson:guncelle}
+
+emlak_json_sil:
+      path: /api/emlak/sil/{id}
+      defaults: { _controller: VanBundle:EmlakJson:sil}
+
+reklam_json_ana:
+      path: /api/reklam/ana
+      defaults: { _controller: VanBundle:ReklamJson:anaKategori}
+
+reklam_json_alt:
+      path: /api/reklam/alt
+      defaults: { _controller: VanBundle:ReklamJson:altKategori}
+
+reklam_json_reklamlistele:
+      path: /api/reklam/listele/{id}
+      defaults: { _controller: VanBundle:ReklamJson:reklamListele}
+
+reklam_json_listele:
+      path: /reklam/json/listele
+      defaults: { _controller: VanBundle:ReklamJson:listele}
+
+oto_json_kiralik:
+      path: /api/oto/kiralik
+      defaults: { _controller: VanBundle:OtoJson:kiralik}
+
+oto_json_satilik:
+      path: /api/oto/satilik
+      defaults: { _controller: VanBundle:OtoJson:satilik}
+
+oto_json_listele:
+      path: /oto/json/listele
+      defaults: { _controller: VanBundle:OtoJson:listele}
+
+oto_json_ekle:
+      path: /oto/json/ekle
+      defaults: { _controller: VanBundle:OtoJson:ekle}
+
+oto_json_guncelle:
+      path: /oto/json/guncelle
+      defaults: { _controller: VanBundle:OtoJson:guncelle}
+
+oto_json_sil:
+      path: /oto/json/sil/{id}
+      defaults: { _controller: VanBundle:OtoJson:sil}
+
+search_json_oto:
+      path: /api/search/oto/
+      defaults: { _controller: VanBundle:Search:otoSearchAll}
+
+search_json_emlak:
+      path: /api/search/emlak/{keyword}
+      defaults: { _controller: VanBundle:Search:emlakSearchAll}
+
+search_json_seri:
+      path: /api/search/seri
+      defaults: { _controller: VanBundle:Search:seriSearchAll}
+
+uye_ekle_json:
+      path: /api/user/create
+      defaults: { _controller: VanBundle:UserRegister:saveUser}
+
+foto_json_ekle:
+      path: /foto/ekle
+      defaults: { _controller: VanBundle:FotoEkle:index}
+
+acilis_ekle:
+      path: /a/acilis/ekle
+      defaults: { _controller: VanBundle:Acilis:ekle}
+
+acilis_listele:
+      path: /a/acilis/listele
+      defaults: { _controller: VanBundle:Acilis:listele}
+
+acilis_guncelle:
+      path: /a/acilis/guncelle
+      defaults: { _controller: VanBundle:Acilis:guncelle}
+
+acilis_duzenle:
+      path: /a/acilis/duzenle/{id}
+      defaults: { _controller: VanBundle:Acilis:duzenle}
+
+acilis_sil:
+      path: /a/acilis/sil/{id}
+      defaults: { _controller: VanBundle:Acilis:sil}
+
+acilis_reklam_json:
+      path: /api/acilis/reklam
+      defaults: { _controller: VanBundle:AcilisJson:randomList}
+
+reklam_arama_json:
+      path: /api/reklam/arama
+      defaults: { _controller: VanBundle:ReklamJson:reklamArama}
+
+
+
+

@@ -6,10 +6,12 @@ namespace VanBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @JMS\ExclusionPolicy("all")
  */
 class User extends BaseUser
 {
@@ -17,27 +19,53 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Expose
      */
     protected $id;
 
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefon", type="string", length=255,nullable=false)
+     */
+    private $telefon;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_id", type="string", length=255,nullable=false)
+     * @JMS\Expose
+     */
+    private $facebookId;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cinsiyet", type="string", length=100,nullable=false)
+     */
+    private $gender;
+
+
     /**
      * @ORM\OneToMany(targetEntity="VanBundle\Entity\Seri_ilan",mappedBy="uye")
-     *
+     * @JMS\Expose
      */
     private $seri_ilanlar;
 
 
     /**
      * @ORM\OneToMany(targetEntity="VanBundle\Entity\Oto",mappedBy="uye")
-     *
+     * @JMS\Expose
      */
     private $otolar;
 
 
     /**
      * @ORM\OneToMany(targetEntity="VanBundle\Entity\Emlak",mappedBy="uye")
-     *
+     * @JMS\Expose
      */
     private $emlaklar;
 
@@ -49,6 +77,81 @@ class User extends BaseUser
 
         parent::__construct();
         // your own logic
+    }
+
+
+
+
+    /**
+     * Set telefon
+     *
+     * @param string $telefon
+     *
+     * @return User
+     */
+    public function setTelefon($telefon)
+    {
+        $this->telefon = $telefon;
+
+        return $this;
+    }
+
+    /**
+     * Get telefon
+     *
+     * @return string
+     */
+    public function getTelefon()
+    {
+        return $this->telefon;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     *
+     * @return User
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 
     /**

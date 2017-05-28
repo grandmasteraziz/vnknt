@@ -1,10 +1,26 @@
 {% extends "base.html.twig" %}
 
  {% block body %}
-     Listeleme Sayfasıdır.
-     <br>
-
-     <a href="{{ path('anasayfa') }}">Anasayfaya  gider</a>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="error-template">
+                     <h1>
+                         Oops!</h1>
+                     <h2>
+                         404 Sayfa Bulunamadı</h2>
+                     <div class="error-details">
+                         üzgünüm! Sayfa bulunamadı. Bunun bir hata olduğunu düşünüyorsanız lütfen yöneticiyle iletişime geçin...
+                     </div>
+                     <br>
+                     <div class="error-actions">
+                         <a href="{{ path('anasayfa') }}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                             Anasayfaya Git </a>  <a href="http://www.putnas.com" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Putnas </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
 
 
  {% endblock %}

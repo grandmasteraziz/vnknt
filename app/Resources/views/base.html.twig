@@ -2,12 +2,58 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}VanKENT!{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link href="{{ asset('assets/css/bootstrap.min.css')  }}"  type="text/css" rel="stylesheet">
+
+        {% endblock %}
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/jquery-3.1.1.min.js')  }}"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js')  }}"></script>
+
+        <script src="{{ asset('assets/js/bootbox.min.js')}}"></script>
+<script type='text/javascript'>
+            $(document).ready(function() {
+
+            $(".delete").click(function(){
+                $('#load').fadeIn();
+                var commentContainer = $(this).parent();
+            var pid = $(this).attr("data-playgroup-id");
+
+
+            bootbox.confirm("Silinsin mi?" , function(result) {
+            url = '{{path('foto_sil', { 'id':0 }) }}';
+            url = url.replace("0",pid);
+            if(result){
+            $.ajax({
+            url: url,
+            type: 'delete',
+            success: function(result) {
+                commentContainer.slideUp('slow', function() {$(this).remove();});
+                $('#load').fadeOut();
+
+            },
+            error: function(e){
+            console.log(e.responseText);
+            },
+            });
+            }
+            });
+
+            });
+            });
+</script>
+        {% endblock %}
     </body>
 </html>

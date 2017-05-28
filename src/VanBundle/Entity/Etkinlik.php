@@ -21,6 +21,14 @@ class Etkinlik
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adi", type="string", length=255)
+     */
+    private $adi;
+
     /**
      * @var string
      *
@@ -42,6 +50,14 @@ class Etkinlik
     private $kategori;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="kapak_foto", type="string", length=255)
+     */
+    private $kapak_foto;
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -49,6 +65,30 @@ class Etkinlik
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set adi
+     *
+     * @param string $adi
+     *
+     * @return Etkinlik
+     */
+    public function setAdi($adi)
+    {
+        $this->adi = $adi;
+
+        return $this;
+    }
+
+    /**
+     * Get adi
+     *
+     * @return string
+     */
+    public function getAdi()
+    {
+        return $this->adi;
     }
 
     /**
@@ -97,6 +137,30 @@ class Etkinlik
     public function getAciklama()
     {
         return $this->aciklama;
+    }
+
+    /**
+     * Set kapakFoto
+     *
+     * @param string $kapakFoto
+     *
+     * @return Etkinlik
+     */
+    public function setKapakFoto($kapakFoto)
+    {
+        $this->kapak_foto = $kapakFoto;
+
+        return $this;
+    }
+
+    /**
+     * Get kapakFoto
+     *
+     * @return string
+     */
+    public function getKapakFoto()
+    {
+        return $this->kapak_foto;
     }
 
     /**

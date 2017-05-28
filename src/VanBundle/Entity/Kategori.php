@@ -3,12 +3,15 @@
 namespace VanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Kategori
  *
  * @ORM\Table(name="kategori")
  * @ORM\Entity(repositoryClass="VanBundle\Repository\KategoriRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Kategori
 {
@@ -18,12 +21,13 @@ class Kategori
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Expose
      */
     private $id;
 
     /**
      * @var string
-     *
+     * @JMS\Expose
      * @ORM\Column(name="adi", type="string", length=255)
      */
     private $adi;
@@ -32,6 +36,7 @@ class Kategori
      * @var int
      *
      * @ORM\Column(name="parentID", type="smallint")
+     *
      */
     private $parentID;
 
@@ -41,15 +46,18 @@ class Kategori
      */
     private $emlaklar;
 
-    /**
-     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Reklam",mappedBy="kategori")
-     *
-     */
-    private $reklamlar;
+    //mesela bunlarada arasıra ihtiyacın olabilir kategorinin latındaki arabalrı getir gibisinden bunlarıda gruplayabilirisn
+    //şu şekilde
+    //şimdi bu gelmez
+    //ama eğer burada yasam tablosuyla ilişkili olmadığı için olabilir mi?
+    // yok bu grup değerini şu şekilde planlamak lazım en başta
+    // default diye bi grup tanımlamak lazım her halükarda gelicek olan alanları tek tek ayarlıcaksın
+    // bu şekilde yasam tablosuna eklenmesi gerek default değerlerin sonrasında
+    //
 
     /**
      * @ORM\OneToMany(targetEntity="VanBundle\Entity\Oto",mappedBy="kategori")
-     *
+     * @JMS\Groups({"otogetir","default"})
      */
     private $otolar;
 
@@ -76,12 +84,13 @@ class Kategori
     {
 
         $this->emlaklar = new ArrayCollection();
-        $this->reklamlar=new ArrayCollection();
         $this->otolar=new ArrayCollection();
         $this->etkinlikler=new ArrayCollection();
         $this->yasamlar=new ArrayCollection();
         $this->seri_ilanlar=new ArrayCollection();
     }
+
+
 
     /**
      * Get id
@@ -173,40 +182,6 @@ class Kategori
     public function getEmlaklar()
     {
         return $this->emlaklar;
-    }
-
-    /**
-     * Add reklamlar
-     *
-     * @param \VanBundle\Entity\Reklam $reklamlar
-     *
-     * @return Kategori
-     */
-    public function addReklamlar(\VanBundle\Entity\Reklam $reklamlar)
-    {
-        $this->reklamlar[] = $reklamlar;
-
-        return $this;
-    }
-
-    /**
-     * Remove reklamlar
-     *
-     * @param \VanBundle\Entity\Reklam $reklamlar
-     */
-    public function removeReklamlar(\VanBundle\Entity\Reklam $reklamlar)
-    {
-        $this->reklamlar->removeElement($reklamlar);
-    }
-
-    /**
-     * Get reklamlar
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReklamlar()
-    {
-        return $this->reklamlar;
     }
 
     /**

@@ -2,120 +2,48 @@
 
 namespace VanBundle\Controller;
 
+use Hateoas\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use VanBundle\Entity\Etkinlik;
 use VanBundle\Entity\Kategori;
+use VanBundle\Factory\KnpPaginatorFactory;
 use VanBundle\VanBundle;
+use Symfony\Component\HttpFoundation\Response;
 
 class EtkinlikJsonController extends Controller
 {
-    public function indexAction($name)
-    {
-        return $this->render('VanBundle:Etkinlik:index.html.twig');
-    }
 
-    public function listeleAction()
+    public function listeleAction(Request $request)
     {
         $em=$this->getDoctrine()->getManager();
 
-        $etkinlik=$em->getRepository('VanBundle:Etkinlik')->findAll();
+        $etkinlik=$em->getRepository('VanBundle:Etkinlik')->findBy(array(),array('id' => 'DESC'));
+
+        $pager=$this->get('knp_paginator');
+        $paginated=$pager->paginate($etkinlik,$request->query->getInt('page',1),$request->query->getInt('limit',10));
 
 
-        $yanit=array();
-        foreach ($etkinlik as $meta)
-        {
-            $newEtkinlik=array();
-            $newEtkinlik['id']=$meta->getId();
-            $newEtkinlik['adi']=$meta->getAd();
-            $newEtkinlik['adres']=$meta->getAdres();
-            $newEtkinlik['aciklama']=$meta->getAciklama();
-            array_push($yanit,$newEtkinlik);
-        }
+        $factory=new KnpPaginatorFactory();
+        $collection=$factory->createRepresentation($paginated,new Route('etkinlikjson_listele'),array());
 
-        $response=new Response(json_encode($yanit,JSON_UNESCAPED_UNICODE));
-        $response->headers->set('Content-type','application/json; charset=utf-8');
-        $response->setStatusCode(200);
-        return $response;
+        $serializer=$this->get('jms_serializer');
+
+        $data=$serializer->serialize([
+            'meta'=>$collection,
+            'data'=>$paginated->getItems()
+        ],'json');
+
+        return new Response($data,200,[
+            'content-type'=>'application/json'
+        ]);
     }
 
-    public function ekleAction(Request $request)
-    {
-        //doctrini çağırdık
-      $em=$this->getDoctrine()->getManager();
-
-
-        // Kategori Bilgisini Al
-        $kategori= $em->find("VanBundle:Kategori", 6);
-
-        //posttan gelen verilerin alınması
-        $adi=$request->request->get('adi');
-        $adres=$request->request->get('adres');
-        $aciklama=$request->request->get('aciklama');
-
-
-        $yeni_etkinlik=new Etkinlik();
-        $yeni_etkinlik->setAdi($adi);
-        $yeni_etkinlik->setAdres($adres);
-        $yeni_etkinlik->setAciklama($aciklama);
-
-        // relate this Etkinlik to the Kategori
-        $yeni_etkinlik->setKategori($kategori);
-
-        $em->merge($yeni_etkinlik);
-        $em->flush();
-
-        return null;
-    }
-
-    public function duzenleAction($id)
-    {
-        $em=$this->getDoctrine()->getManager();
-
-        $etkinlik=$em->getRepository('VanBundle:Etkinlik')->findOneBy(array('id'=>$id));
-
-        return null;
-    }
-
-    public function guncelleAction(Request $request)
-    {
-        //doctrini çağırdık
-        $em=$this->getDoctrine()->getManager();
-
-
-        // Kategori Bilgisini Al
-        $kategori= $em->find("VanBundle:Kategori", 6);
-
-        //posttan gelen verilerin alınması
-        $adi=$request->request->get('adi');
-        $adres=$request->request->get('adres');
-        $aciklama=$request->request->get('aciklama');
-        $id=$request->request->get('id');
 
 
 
-        $yeni_etkinlik=$em->getRepository('VanBundle:Etkinlik')->findOneBy(array('id'=>$id));
-        $yeni_etkinlik->setAdi($adi);
-        $yeni_etkinlik->setAdres($adres);
-        $yeni_etkinlik->setAciklama($aciklama);
-
-        // relate this Etkinlik to the Kategori
-        $yeni_etkinlik->setKategori($kategori);
-
-        $em->flush();
-
-        return $this->redirect($this->generateUrl('etkinlik_listele'));
-    }
-    public function silAction($id)
-    {
-        $em=$this->getDoctrine()->getManager();
-
-        $etkinlik=$em->getRepository('VanBundle:Etkinlik')->findOneBy(array('id'=>$id));
-
-        $em->remove($etkinlik);
-        $em->flush();
-
-
-        return null;
-    }
+    
+    
+    
 }

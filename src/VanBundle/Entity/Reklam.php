@@ -2,6 +2,7 @@
 
 namespace VanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,22 +32,51 @@ class Reklam
     /**
      * @var string
      *
+     * @ORM\Column(name="telefon", type="string", length=255)
+     */
+    private $telefon;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="aciklama", type="text")
      */
     private $aciklama;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Foto",inversedBy="reklamlar")
-     * @ORM\JoinColumn(referencedColumnName="id",name="foto_id")
-     */
-    private $foto;
 
     /**
-     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Kategori",inversedBy="reklamlar")
+     *One-To-Many, Bidirectional
+     *
+     *@var ArrayCollection $fotolar
+     *
+     * @ORM\OneToMany(targetEntity="VanBundle\Entity\Foto",mappedBy="reklam",cascade={"persist"})
+     *
+     */
+    protected $fotolar;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="VanBundle\Entity\ReklamKategori",inversedBy="reklamlar")
      * @ORM\JoinColumn(referencedColumnName="id",name="kategori_id")
      */
     private $kategori;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kapak_foto", type="string", length=255)
+     */
+    private $kapak_foto;
+
+    public function __construct()
+    {
+        $this->fotolar=new ArrayCollection();
+    }
+
+
+
+
 
     /**
      * Get id
@@ -83,6 +113,30 @@ class Reklam
     }
 
     /**
+     * Set telefon
+     *
+     * @param string $telefon
+     *
+     * @return Reklam
+     */
+    public function setTelefon($telefon)
+    {
+        $this->telefon = $telefon;
+
+        return $this;
+    }
+
+    /**
+     * Get telefon
+     *
+     * @return string
+     */
+    public function getTelefon()
+    {
+        return $this->telefon;
+    }
+
+    /**
      * Set aciklama
      *
      * @param string $aciklama
@@ -107,37 +161,71 @@ class Reklam
     }
 
     /**
-     * Set foto
+     * Set kapakFoto
      *
-     * @param \VanBundle\Entity\Foto $foto
+     * @param string $kapakFoto
      *
      * @return Reklam
      */
-    public function setFoto(\VanBundle\Entity\Foto $foto = null)
+    public function setKapakFoto($kapakFoto)
     {
-        $this->foto = $foto;
+        $this->kapak_foto = $kapakFoto;
 
         return $this;
     }
 
     /**
-     * Get foto
+     * Get kapakFoto
      *
-     * @return \VanBundle\Entity\Foto
+     * @return string
      */
-    public function getFoto()
+    public function getKapakFoto()
     {
-        return $this->foto;
+        return $this->kapak_foto;
+    }
+
+    /**
+     * Add fotolar
+     *
+     * @param \VanBundle\Entity\Foto $fotolar
+     *
+     * @return Reklam
+     */
+    public function addFotolar(\VanBundle\Entity\Foto $fotolar)
+    {
+        $this->fotolar[] = $fotolar;
+
+        return $this;
+    }
+
+    /**
+     * Remove fotolar
+     *
+     * @param \VanBundle\Entity\Foto $fotolar
+     */
+    public function removeFotolar(\VanBundle\Entity\Foto $fotolar)
+    {
+        $this->fotolar->removeElement($fotolar);
+    }
+
+    /**
+     * Get fotolar
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFotolar()
+    {
+        return $this->fotolar;
     }
 
     /**
      * Set kategori
      *
-     * @param \VanBundle\Entity\Kategori $kategori
+     * @param \VanBundle\Entity\ReklamKategori $kategori
      *
      * @return Reklam
      */
-    public function setKategori(\VanBundle\Entity\Kategori $kategori = null)
+    public function setKategori(\VanBundle\Entity\ReklamKategori $kategori = null)
     {
         $this->kategori = $kategori;
 
@@ -147,7 +235,7 @@ class Reklam
     /**
      * Get kategori
      *
-     * @return \VanBundle\Entity\Kategori
+     * @return \VanBundle\Entity\ReklamKategori
      */
     public function getKategori()
     {

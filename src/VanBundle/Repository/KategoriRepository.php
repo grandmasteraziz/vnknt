@@ -10,4 +10,5 @@ namespace VanBundle\Repository;
  */
 class KategoriRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
