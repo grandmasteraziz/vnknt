@@ -1,0 +1,12 @@
+Knp\Component\Pager\Pagination\AbstractPagination:
+  exclusion_policy: ALL
+  properties:
+      items:
+          expose: true
+      currentPageNumber:
+          expose: true
+      numItemsPerPage:
+          expose: true
+      totalCount:
+          expose: true
+

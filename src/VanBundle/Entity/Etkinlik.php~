@@ -21,6 +21,14 @@ class Etkinlik
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adi", type="string", length=255)
+     */
+    private $adi;
+
     /**
      * @var string
      *
@@ -42,84 +50,10 @@ class Etkinlik
     private $kategori;
 
     /**
-     * Get id
+     * @var string
      *
-     * @return integer
+     * @ORM\Column(name="kapak_foto", type="string", length=255)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $kapak_foto;
 
-    /**
-     * Set adres
-     *
-     * @param string $adres
-     *
-     * @return Etkinlik
-     */
-    public function setAdres($adres)
-    {
-        $this->adres = $adres;
-
-        return $this;
-    }
-
-    /**
-     * Get adres
-     *
-     * @return string
-     */
-    public function getAdres()
-    {
-        return $this->adres;
-    }
-
-    /**
-     * Set aciklama
-     *
-     * @param string $aciklama
-     *
-     * @return Etkinlik
-     */
-    public function setAciklama($aciklama)
-    {
-        $this->aciklama = $aciklama;
-
-        return $this;
-    }
-
-    /**
-     * Get aciklama
-     *
-     * @return string
-     */
-    public function getAciklama()
-    {
-        return $this->aciklama;
-    }
-
-    /**
-     * Set kategori
-     *
-     * @param \VanBundle\Entity\Kategori $kategori
-     *
-     * @return Etkinlik
-     */
-    public function setKategori(\VanBundle\Entity\Kategori $kategori = null)
-    {
-        $this->kategori = $kategori;
-
-        return $this;
-    }
-
-    /**
-     * Get kategori
-     *
-     * @return \VanBundle\Entity\Kategori
-     */
-    public function getKategori()
-    {
-        return $this->kategori;
-    }
 }

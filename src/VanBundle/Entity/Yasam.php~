@@ -3,12 +3,14 @@
 namespace VanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Yasam
  *
  * @ORM\Table(name="yasam")
  * @ORM\Entity(repositoryClass="VanBundle\Repository\YasamRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Yasam
 {
@@ -18,6 +20,7 @@ class Yasam
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Expose
      */
     private $id;
 
@@ -25,6 +28,7 @@ class Yasam
      * @var string
      *
      * @ORM\Column(name="adi", type="string", length=255)
+     * @JMS\Expose
      */
     private $adi;
 
@@ -32,11 +36,13 @@ class Yasam
      * @var string
      *
      * @ORM\Column(name="adres", type="text")
+     * @JMS\Expose
      */
     private $adres;
 
 
     /**
+     * @JMS\Expose
      * @ORM\ManyToOne(targetEntity="VanBundle\Entity\Kategori",inversedBy="yasamlar")
      * @ORM\JoinColumn(referencedColumnName="id",name="kategori_id")
      */

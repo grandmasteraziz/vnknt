@@ -1,0 +1,110 @@
+{% extends "base.html.twig" %}
+
+ {% block body %}
+
+     <header>
+         <!-- Nav Başı -->
+         <nav class="navbar navbar-inverse">
+             <div class="container-fluid">
+                 <div class="navbar-header">
+                     <a class="navbar-brand" href="/">Van Kent Rehberi</a>
+                 </div>
+                 <ul class="nav navbar-nav">
+                     <li class="active"><a href="{{ path('anasayfa') }}">Anasayfa</a></li>
+                     <li><a href="{{path('emlak_listele')}}">Emlak</a></li>
+                     <li><a href="{{path('seriilan_listele')}}">Seri İlanlar</a></li>
+                     <li><a href="{{path('etkinlik_listele')}}">Etkinlikler</a></li>
+                     <li><a href="{{path('yasam_listele')}}">Yaşam</a></li>
+                     <li><a href="{{path('oto_listele')}}">Vasıta</a></li>
+                     <li><a href="{{ path('reklam_listele') }}">Reklam</a> </li>
+                     <li><a href="{{path('reklamKategori_listele')}}">Reklam Kategori</a></li>
+                     <li><a href="{{path('acilis_listele')}}">Açılış Reklamı</a></li>
+
+                 </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                     <!--      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+                     <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-in"></span> Çıkış Yap</a></li>
+                 </ul>
+             </div>
+         </nav>
+         <!--Nav Sonu -->
+     </header>
+     <div class="page-header">
+         <h2> <small> <h1> Açılış</h1></small></h2>
+     </div>
+    <div class="container pull-left">
+
+        <button class="btn btn-default btn-large" data-toggle="modal" data-target="#addData">İlan Ekle</button>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="addLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="addLabel">Ekle</h4>
+                    </div>
+
+
+                    <div class="modal-body">
+                        <form action="{{ path('acilis_ekle') }}" method="post" enctype="multipart/form-data">
+
+
+                            <div class="form-group">
+                                <label for="adi">Ad</label>
+                                <input type="text" class="form-control" name="adi" id="adi" placeholder="Adı" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kapakFoto">Kapak Fotoğrafını Seçiniz</label>
+                                <input type="file" name="kapakFoto" id="kapakFoto" class="form-control"  accept="image/*" required>
+                            </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div><!--modal sonu-->
+        <p></p>
+    </div>
+     <!-- modal sonu-->
+<br> <br>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Adı</th>
+        <th>Foto</th>
+        <th>İşlemler</th>
+    </tr>
+    {% for i in acilis %}
+    <tr>
+        <td>{{ i.adi }}</td>
+        <td width="130"><img src="{{asset('uploads/brochures/' ~ i.kapakFoto ) }}"  width="120" class="img-thumbnail"/></td>
+        <td>
+            <a href="{{ path('acilis_duzenle',{'id':i.id}) }}" class="btn btn-info glyphicon glyphicon-pencil"> Düzenle</a>
+            <a href="{{ path('acilis_sil',{'id':i.id}) }}" class="btn btn-warning glyphicon glyphicon-trash"> Sil</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+ </table>
+     <div class="navigation text-center">
+         {{ knp_pagination_render(acilis) }}
+     </div>
+
+
+
+     <br>   <br>   <br>   <br>
+
+
+
+
+
+
+
+ {% endblock %}
